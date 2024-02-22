@@ -1,0 +1,47 @@
+from datetime import datetime
+
+# Função para coletar dados do diário de obra
+def coletar_dados_diario_obra():
+    data = input("Data (DD/MM/AAAA): ")
+    responsavel = input("Responsável pelo Preenchimento: ")
+    estado_tempo = input("Estado do Tempo (Chuvoso/Nublado/Ensolarado): ")
+    quantidade_funcionarios = int(input("Quantidade de Funcionários: "))
+
+    print("Função dos Funcionários:")
+    pedreiro = input("Pedreiro (S/N): ").upper() == "S"
+    ajudante = input("Ajudante (S/N): ").upper() == "S"
+    carpinteiro = input("Carpinteiro (S/N): ").upper() == "S"
+    eletricista = input("Eletricista (S/N): ").upper() == "S"
+    encanador = input("Encanador (S/N): ").upper() == "S"
+
+    return {
+        "Data": data,
+        "Responsável": responsavel,
+        "Estado do Tempo": estado_tempo,
+        "Quantidade de Funcionários": quantidade_funcionarios,
+        "Função dos Funcionários": {
+            "Pedreiro": pedreiro,
+            "Ajudante": ajudante,
+            "Carpinteiro": carpinteiro,
+            "Eletricista": eletricista,
+            "Encanador": encanador
+        }
+    }
+
+# Função para exibir os dados coletados
+def exibir_dados_diario_obra(dados):
+    print("\nDados do Diário de Obra:")
+    print("Data:", dados["Data"])
+    print("Responsável pelo Preenchimento:", dados["Responsável"])
+    print("Estado do Tempo:", dados["Estado do Tempo"])
+    print("Quantidade de Funcionários:", dados["Quantidade de Funcionários"])
+    print("Função dos Funcionários:")
+    for funcao, presente in dados["Função dos Funcionários"].items():
+        if presente:
+            print(" -", funcao)
+
+# Coleta de dados do diário de obra
+dados_diario_obra = coletar_dados_diario_obra()
+
+# Exibição dos dados coletados
+exibir_dados_diario_obra(dados_diario_obra)
